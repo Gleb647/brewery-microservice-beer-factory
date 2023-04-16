@@ -4,6 +4,8 @@ import com.microservices.beerfactory.domain.Beer;
 import com.microservices.beerfactory.repository.BeerRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BeerFactoryServiceImpl implements BeerFactoryService{
 
@@ -24,5 +26,10 @@ public class BeerFactoryServiceImpl implements BeerFactoryService{
         Beer beer = beerRepository.findBeerByBeerName(beerName);
         beer.setProducedQuantity(quantity);
         beerRepository.save(beer);
+    }
+
+    @Override
+    public List<Beer> getBeer(){
+        return beerRepository.findAll();
     }
 }

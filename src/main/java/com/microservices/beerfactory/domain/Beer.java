@@ -7,12 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -24,13 +22,13 @@ public class Beer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
-    @CreationTimestamp
-    private Timestamp createDate;
+    @CreatedDate
+    private LocalDateTime createDate;
 
-    @UpdateTimestamp
-    private Timestamp lastModifiedDate;
+    private LocalDateTime lastModifiedDate;
 
     private String beerName;
+
     private String beerStyle;
 
     private Long upc;
